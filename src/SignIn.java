@@ -45,6 +45,11 @@ public class SignIn extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Noto Sans CJK HK", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Sign In");
+        jButton1.addActionListener(e->{
+            MainInterface mi = new MainInterface();
+            this.setVisible(false);
+            mi.setVisible(true);
+        });
 
         jLabel3.setForeground(new java.awt.Color(60, 83, 94));
         jLabel3.setText("Don't have an Account");

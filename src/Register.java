@@ -58,6 +58,12 @@ public class Register extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Register");
 
+        jButton1.addActionListener(e->{
+            SignIn sg = new SignIn();
+            this.setVisible(false);
+            sg.setVisible(true);
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(

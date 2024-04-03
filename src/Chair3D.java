@@ -1,21 +1,21 @@
+import javax.swing.*;
 import com.jogamp.opengl.*;
 import com.jogamp.opengl.awt.GLCanvas;
 import com.jogamp.opengl.util.FPSAnimator;
+import java.awt.event.*;
 
-import javax.swing.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-
-public class Chair3DRenderer extends JFrame implements GLEventListener, MouseListener, MouseMotionListener {
+public class Chair3D extends JFrame implements GLEventListener, MouseListener, MouseMotionListener {
 
     private static final long serialVersionUID = 1L;
     private int prevMouseX, prevMouseY;
     private float rotateX = 0;
     private float rotateY = 0;
     private FPSAnimator animator;
+    private String color;
 
-    public Chair3DRenderer() {
+    private float[] colorArr;
+
+    public Chair3D(String color) {
         setTitle("3D Chair Renderer");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -30,14 +30,32 @@ public class Chair3DRenderer extends JFrame implements GLEventListener, MouseLis
         getContentPane().add(glcanvas);
         setSize(800, 600);
         setLocationRelativeTo(null);
-
+        this.color = color;
+        float[] brown = {0.5f, 0.35f, 0.05f};
+        float[] black = {0.0f, 0.0f, 0.0f};
+        float[] darkRed = {0.5f, 0.0f, 0.0f};
+        float[] darkBlue = {0.0f, 0.0f, 0.5f};
+        float[] darkBrown = {0.3f, 0.2f, 0.1f};
+        if(color.equalsIgnoreCase("BLACK")){
+            this.colorArr = black;
+        }else if (color.equalsIgnoreCase("DarkRed")){
+            this.colorArr = darkRed;
+        }else if (color.equalsIgnoreCase("Brown")){
+            this.colorArr = brown;
+        }else if (color.equalsIgnoreCase("DarkBlue")){
+            this.colorArr = darkBlue;
+        }else if (color.equalsIgnoreCase("DarkBrown")){
+            this.colorArr = darkBrown;
+        }else{
+            this.colorArr = brown;
+        }
         animator = new FPSAnimator(glcanvas, 60);
         animator.start();
     }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            Chair3DRenderer renderer = new Chair3DRenderer();
+            Chair3D renderer = new Chair3D("DarkBlue");
             renderer.setVisible(true);
         });
     }
@@ -72,7 +90,10 @@ public class Chair3DRenderer extends JFrame implements GLEventListener, MouseLis
 
     private void renderChair(GL2 gl) {
         // Render chair
-        gl.glColor3f(0.65f, 0.50f, 0.39f); // Brown
+        if( color.equalsIgnoreCase("Blue")){
+
+        }
+        gl.glColor3fv(colorArr , 0);
         gl.glPushMatrix();
         gl.glTranslatef(0.0f, -0.5f, 0.0f); // Translate to sit on the ground
         // Seat

@@ -2,9 +2,7 @@ import java.util.Objects;
 
 public class MainInterface extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainInterface
-     */
+
     public MainInterface() {
         initComponents();
     }
@@ -36,6 +34,12 @@ public class MainInterface extends javax.swing.JFrame {
         newDesign.setBackground(new java.awt.Color(144, 95, 60));
         newDesign.setForeground(new java.awt.Color(255, 255, 255));
         newDesign.setText("New Design");
+
+        newDesign.addActionListener(e->{
+            ViewSelect vs = new ViewSelect();
+            this.setVisible(false);
+            vs.setVisible(true);
+        });
 
         OtherDesign.setBackground(new java.awt.Color(144, 95, 60));
         OtherDesign.setForeground(new java.awt.Color(255, 255, 255));

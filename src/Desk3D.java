@@ -1,13 +1,10 @@
+import javax.swing.*;
 import com.jogamp.opengl.*;
 import com.jogamp.opengl.awt.GLCanvas;
 import com.jogamp.opengl.util.FPSAnimator;
+import java.awt.event.*;
 
-import javax.swing.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-
-public class Desk3DRender extends JFrame implements GLEventListener, MouseListener, MouseMotionListener {
+public class Desk3D extends JFrame implements GLEventListener, MouseListener, MouseMotionListener {
 
     private static final long serialVersionUID = 1L;
     private int prevMouseX, prevMouseY;
@@ -15,7 +12,11 @@ public class Desk3DRender extends JFrame implements GLEventListener, MouseListen
     private float rotateY = 0;
     private FPSAnimator animator;
 
-    public Desk3DRender() {
+    private String color;
+
+    private float[] colorArr;
+
+    public Desk3D(String color) {
         setTitle("Desk Renderer");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -30,14 +31,32 @@ public class Desk3DRender extends JFrame implements GLEventListener, MouseListen
         getContentPane().add(glcanvas);
         setSize(800, 600);
         setLocationRelativeTo(null);
-
+        this.color = color;
+        float[] brown = {0.5f, 0.35f, 0.05f};
+        float[] black = {0.0f, 0.0f, 0.0f};
+        float[] darkRed = {0.5f, 0.0f, 0.0f};
+        float[] darkBlue = {0.0f, 0.0f, 0.5f};
+        float[] darkBrown = {0.3f, 0.2f, 0.1f};
+        if(color.equalsIgnoreCase("BLACK")){
+            this.colorArr = black;
+        }else if (color.equalsIgnoreCase("DarkRed")){
+            this.colorArr = darkRed;
+        }else if (color.equalsIgnoreCase("Brown")){
+            this.colorArr = brown;
+        }else if (color.equalsIgnoreCase("DarkBlue")){
+            this.colorArr = darkBlue;
+        }else if (color.equalsIgnoreCase("DarkBrown")){
+            this.colorArr = darkBrown;
+        }else{
+            this.colorArr = brown;
+        }
         animator = new FPSAnimator(glcanvas, 60);
         animator.start();
     }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            Desk3DRender renderer = new Desk3DRender();
+            Desk3D renderer = new Desk3D("DarkRed");
             renderer.setVisible(true);
         });
     }
@@ -72,7 +91,7 @@ public class Desk3DRender extends JFrame implements GLEventListener, MouseListen
 
     private void renderChair(GL2 gl) {
         // Render chair
-        gl.glColor3f(0.65f, 0.50f, 0.39f); // Brown
+        gl.glColor3fv(colorArr , 0);
         gl.glPushMatrix();
         gl.glTranslatef(0.0f, -0.5f, 0.0f); // Translate to sit on the ground
         // Seat
