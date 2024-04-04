@@ -1,9 +1,4 @@
 
-
-/**
- *
- * @author ravindu
- */
 public class Table3DSettings extends javax.swing.JFrame {
 
     /**
