@@ -96,7 +96,7 @@ public class Settings2D extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel9.setText("Red");
 
-        tableSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Size 1", "Size 2" }));
+        tableSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Small", "Large"}));
         tableSize.setName("tableSize"); // NOI18N
         tableSize.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,9 +104,9 @@ public class Settings2D extends javax.swing.JFrame {
             }
         });
 
-        cupboardSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Size 1", "Size 2" }));
+        cupboardSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Small", "Large" }));
 
-        chairSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Size 1", "Size 2" }));
+        chairSize.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Small", "Large" }));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(Objects.requireNonNull(getClass().getResource("/thumnail1.jpg")))); // NOI18N
 

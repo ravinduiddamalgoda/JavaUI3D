@@ -1,9 +1,7 @@
 
 public class Table3DSettings extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Select3DColor
-     */
+
     public Table3DSettings() {
         initComponents();
     }

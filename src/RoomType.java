@@ -142,6 +142,8 @@ public class RoomType extends javax.swing.JFrame {
 
     private void rectangleActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        SetFloorSize rt = new SetFloorSize(tableScale , chairScale , cupboardScale , tableColor , chairColor , cupColor);
+        rt.setVisible(true);
         System.out.println("Rect");
     }
 
